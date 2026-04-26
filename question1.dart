@@ -16,12 +16,19 @@ bool isStudent = true;
 // 2. Write a function called calculateBMI that takes weight (double) and height (double) as parameters and returns the BMI as a double
 // TODO: Implement the calculateBMI function
 double calculateBMI(double weight, double height) {
-  // Formula: BMI = weight / (height * height)
-  return weight / (height * height);
+  // TODO: Calculate BMI = weight / (height * height)
+  return (weight / (height * height));
 }
 
 // 3. Write a function called getGrade that takes a score (int) and returns a grade (String) based on:
+//    - 90-100: A
+//    - 80-89: B
+//    - 70-79: C
+//    - 60-69: D
+//    - Below 60: F
+// TODO: Implement the getGrade function
 String getGrade(int score) {
+  // TODO: Add your logic here
   if (score >= 90) {
     return "A";
   } else if (score >= 80) {
@@ -37,14 +44,16 @@ String getGrade(int score) {
 
 void main() {
   // TODO: Initialize your variables with appropriate values
-
+  name = "Jone doe";
+  age = 25;
+  height = 5.9;
+  isStudent = true;
   // TODO: Calculate BMI and grade
-  double weight = 78.35
-  double bmi = calculateBMI(weight, height);
-  String grade = getGrade(85);
+  double bmi = calculateBMI(99, height);
+  String grade = getGrade(70);
 
   // TODO: Use string interpolation to display the results as shown in expected output
   print("Name: $name, Age: $age, Height: $height, Is Student: $isStudent");
-  print("BMI: ${bmi.toStringAsFixed(1)}"); 
+  print("BMI: $bmi");
   print("Grade: $grade");
 }
