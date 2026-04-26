@@ -12,66 +12,78 @@
 import 'dart:math';
 
 void main() {
-  // 1. Create a List<String> of student names
+  // 1. Create a List<String> of student names: ["Alice", "Bob", "Charlie", "Diana", "Eve"]
+  // TODO: Create the student names list
   List<String> studentNames = ["Alice", "Bob", "Charlie", "Diana", "Eve"];
 
   // 2. Create a Map<String, int> to store student scores
+  // TODO: Create the scores map
   Map<String, int> studentScores = {};
 
   // 3. Use a for loop to assign random scores (60-100) to each student
-  var random = Random();
-  for (var name in studentNames) {
-    // nextInt(41) gives 0-40, adding 60 results in 60-100
-    studentScores[name] = 60 + random.nextInt(41);
+  // TODO: Implement the for loop to assign random scores
+  Random random = Random();
+  for (String student in studentNames) {
+    studentScores[student] = 60 + random.nextInt(41);
   }
 
-  // 4. Find and display highest, lowest, and average scores
+  // 4. Find and display:
+  //    - The student with the highest score
+  //    - The student with the lowest score
+  //    - The average score of all students
+  // TODO: Implement the logic to find highest, lowest, and average scores
   String highestStudent = "";
-  int highestScore = -1;
+  int highestScore = 0;
   String lowestStudent = "";
-  int lowestScore = 101;
-  double sum = 0;
-
-  studentScores.forEach((name, score) {
-    sum += score;
-
+  int lowestScore = 100;
+  double averageScore = 0.0;
+  int totalScore = 0;
+  // TODO: Add your logic here
+  for (String student in studentNames) {
+    int score = studentScores[student]!;
+    totalScore += score;
     if (score > highestScore) {
       highestScore = score;
-      highestStudent = name;
+      highestStudent = student;
     }
-
     if (score < lowestScore) {
       lowestScore = score;
-      lowestStudent = name;
+      lowestStudent = student;
     }
-  });
-
-  double averageScore = sum / studentNames.length;
+  }
+  averageScore = totalScore / studentNames.length;
 
   print("Student Scores: $studentScores");
   print("Highest Score: $highestStudent with $highestScore");
   print("Lowest Score: $lowestStudent with $lowestScore");
-  print("Average Score: ${averageScore.toStringAsFixed(1)}");
+  print("Average Score: $averageScore");
 
-  // 5. Use a switch statement to categorize students
-  studentScores.forEach((name, score) {
-    String category;
+  // 5. Use a switch statement to categorize students:
+  //    - 90-100: "Excellent"
+  //    - 80-89: "Good"
+  //    - 70-79: "Average"
+  //    - Below 70: "Needs Improvement"
+  // TODO: Implement the switch statement for each student
+  for (String student in studentNames) {
+    int score = studentScores[student] ?? 0;
+    String category = "";
 
-    // In Dart 3.0+, we can use relational patterns in switch expressions
-    switch (score) {
-      case >= 90:
+    // TODO: Add your switch statement here
+    switch (score ~/ 10) {
+      case 10:
+      case 9:
         category = "Excellent";
         break;
-      case >= 80:
+      case 8:
         category = "Good";
         break;
-      case >= 70:
+      case 7:
         category = "Average";
         break;
       default:
         category = "Needs Improvement";
     }
-    
-    print("$name: $score ($category)");
-  });
+
+    print("$student: $score ($category)");
+  }
 }
