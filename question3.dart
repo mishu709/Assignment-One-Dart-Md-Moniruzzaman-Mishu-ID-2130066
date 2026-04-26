@@ -16,58 +16,80 @@ class BankAccount {
   String accountType; // Savings/Checking
 
   // 2. Constructor:
-  // Initialize all properties and set initial balance to 0.0
+  //    - Initialize all properties
+  //    - Set initial balance to 0.0
+  // TODO: Implement the constructor
   BankAccount(this.accountNumber, this.accountHolder, this.accountType)
       : balance = 0.0;
 
   // 3. Methods:
-  // deposit(double amount): Add money to account
+  //    - deposit(double amount): Add money to account
+  // TODO: Implement the deposit method
   void deposit(double amount) {
+    // TODO: Add the amount to balance
     balance += amount;
   }
 
-  // withdraw(double amount): Remove money from account (check for sufficient funds)
+  //    - withdraw(double amount): Remove money from account (check for sufficient funds)
+  // TODO: Implement the withdraw method
   void withdraw(double amount) {
-    if (balance >= amount) {
+    // TODO: Check for sufficient funds and subtract amount
+    if (amount <= balance) {
       balance -= amount;
-    } else {
-      print("Insufficient funds for withdrawal of $amount from account $accountNumber");
     }
+    // TODO: Print error message if insufficient funds
+    else {
+      print(
+          "Insufficient funds for withdrawal 0f $amount from account $accountNumber");
+    }
+    // Expected error format: "Insufficient funds for withdrawal of <amount> from account <accountNumber>"
   }
 
-  // getBalance(): Return current balance
+  //    - getBalance(): Return current balance
+  // TODO: Implement the getBalance method
   double getBalance() {
+    // TODO: Return the current balance
     return balance;
   }
 
-  // displayAccountInfo(): Show account details
+  //    - displayAccountInfo(): Show account details
+  // TODO: Implement the displayAccountInfo method
   void displayAccountInfo() {
-    print("Account: $accountNumber, Holder: $accountHolder, Type: $accountType, Balance: $balance");
+    // TODO: Display account information
+    print(
+        "Account Number: $accountNumber, Holder: $accountHolder, Type: $accountType, Balance: $balance");
+    // Expected format: "Account: <number>, Holder: <name>, Type: <type>, Balance: <balance>"
   }
 }
 
 void main() {
-  // 4. Create 3 bank accounts and demonstrate functionality
-  
-  // Create Account 1: Alice
-  BankAccount account1 = BankAccount("12345", "Alice", "Savings");
-  account1.deposit(1000.0);
-  account1.withdraw(200.0);
+  // 4. Create 3 bank accounts and demonstrate:
+  //    - Depositing money
+  //    - Withdrawing money
+  //    - Displaying account information
+  //    - Handling insufficient funds scenario
 
-  // Create Account 2: Bob
-  BankAccount account2 = BankAccount("67890", "Bob", "Checking");
-  account2.deposit(500.0);
-  account2.withdraw(100.0); // Resulting balance 400.0
-
-  // Create Account 3: Charlie
-  BankAccount account3 = BankAccount("11111", "Charlie", "Savings");
-  account3.deposit(2000.0);
-
-  // Display information for all accounts
-  account1.displayAccountInfo();
-  account2.displayAccountInfo();
-  account3.displayAccountInfo();
-
-  // Demonstrate insufficient funds scenario for Bob (Attempt to withdraw 1000 from 400 balance)
-  account2.withdraw(1000.0);
+  // TODO: Create 3 bank accounts:
+  // 1. Account: 12345, Holder: Alice, Type: Savings
+  // 2. Account: 67890, Holder: Bob, Type: Checking
+  // 3. Account: 11111, Holder: Charlie, Type: Savings
+  BankAccount Account1 = BankAccount("12345", "Alice", "Saving");
+  BankAccount Account2 = BankAccount("67890", "Bob", "Checking");
+  BankAccount Account3 = BankAccount("111111", "Charlie", "Saving");
+  // TODO: Demonstrate depositing money:
+  // Account 1: 1000.0, Account 2: 500.0, Account 3: 2000.0
+  Account1.deposit(1000.0);
+  Account2.deposit(500.0);
+  Account3.deposit(2000.0);
+  // TODO: Demonstrate withdrawing money:
+  // Account 1: 200.0, Account 2: 100.0
+  Account1.withdraw(200.0);
+  Account2.withdraw(100.0);
+  // TODO: Display account information for all accounts
+  Account1.displayAccountInfo();
+  Account2.displayAccountInfo();
+  Account3.displayAccountInfo();
+  // TODO: Demonstrate insufficient funds scenario:
+  // Withdraw 1000.0 from Account 2
+  Account2.withdraw(1000.0);
 }
